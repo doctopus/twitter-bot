@@ -71,5 +71,5 @@ on:
 
 
 #### Acknowledgements
-Inspired by https://github.com/zeepk/twitter-bot-template
+Inspired by https://github.com/zeepk/twitter-bot-template   
 YouTube: https://www.youtube.com/watch?v=wsA_kYRHoPY
