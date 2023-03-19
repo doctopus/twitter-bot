@@ -1,5 +1,9 @@
 name: send-tweet
-on: workflow_dispatch
+#on: workflow_dispatch #manual run replaced by cronjob schedule
+on:
+  schedule:
+    # Runs "Everyday at 4:20AM" (see https://crontab.guru)
+    - cron: '20 4 * * *'
 jobs:
   tweet:
     runs-on: ubuntu-latest
