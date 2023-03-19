@@ -54,8 +54,8 @@
 ```yml
 on:
   schedule:
-    # Runs "Everyday at 4:20AM" (see https://crontab.guru)
-    - cron: '20 4 * * *'
+    # Runs "Everyday at 4:00AM UTC = 12AM in EDT" (see https://crontab.guru)
+    - cron: '0 4 * * *'
 ```
 
 ### To create a Twitter Developer account
@@ -68,3 +68,8 @@ on:
 7. Write all of the secrets and keys down! These are used in your `.env` file
 8. Continue to the Dashboard
 9. TODO: Instructions on how to change token access from `read only` to `read & write`
+
+
+#### Acknowledgements
+Inspired by https://github.com/zeepk/twitter-bot-template
+YouTube: https://www.youtube.com/watch?v=wsA_kYRHoPY
