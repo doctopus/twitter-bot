@@ -3,6 +3,9 @@
 ### IDE Specific ###
 .idea
 #IntelliJ's project specific settings files
+### MacOS Specific ###
+.DS_Store
+
 
 ### Node ###
 # Logs

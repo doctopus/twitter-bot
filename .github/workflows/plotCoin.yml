@@ -1,0 +1,36 @@
+name: Generate Bitcoin Price Plot
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run every day at midnight UTC
+  workflow_dispatch:
+
+jobs:
+  generate_plot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v1
+
+      - name: Install R packages
+        run: |
+          Rscript -e 'install.packages(c("ggplot2", "data.table", "argparse", "magick", "cowplot"))'
+
+      - name: Run script to generate data and plot
+        run: |
+          npm install
+          node plotCoin.js
+
+      - name: Upload plot to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          name: plotCoin
+          path: plotCoin.png
