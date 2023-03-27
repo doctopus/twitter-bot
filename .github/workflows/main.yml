@@ -2,9 +2,8 @@ name: send-tweet
 
 on:
   schedule:
-    # Runs "Everyday at UTC 4:00 AM = EDT 12:00 AM" (see https://crontab.guru)
-    - cron: '0 4 * * *' #"Everyday at UTC 4:00 AM = EDT 12:00 AM" (see https://crontab.guru)
-  workflow_dispatch # Manual run
+    #- cron: '0 4 * * *' #"Everyday at UTC 4:00 AM = EDT 12:00 AM" (see https://crontab.guru)
+  workflow_dispatch #Run manually
 jobs:
   tweet:
     runs-on: ubuntu-latest
