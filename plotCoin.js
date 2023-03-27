@@ -10,7 +10,10 @@ const url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${from}
 console.log(url);
 
 //The url generated from this does not pull the data. while old dates of 2022 pulls the data. Trouble shoot
-*/
+//May be use Cryptocompare api https://min-api.cryptocompare.com/data/v2/histohour?fsym=ETH&tsym=USD&limit=30&toTs=-1&api_key=YOURKEYHERE
+//    https://min-api.cryptocompare.com/documentation?key=Historical&cat=dataHistoday
+   
+ */
 const url = 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2022-02-28&end=2022-03-19';
 fetch(url)
     .then(response => response.json())
