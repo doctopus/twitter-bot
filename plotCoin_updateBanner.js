@@ -13,7 +13,7 @@ const handleUpdateBanner = async () => {
         timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
     });
 
-    const b64content = fs.readFileSync('./plotCoin.png', { encoding: 'base64' });
+    const b64content = fs.readFileSync('./Header1500x500.png', { encoding: 'base64' });
     await twitterClient.post('account/update_profile_banner', {banner: b64content }, () => {});
 };
 

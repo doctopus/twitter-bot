@@ -13,7 +13,7 @@ parser$add_argument("--csvFile")
 args <- parser$parse_args()
 
 # Read in the image file
-img <- image_read("plotCoinCanvas.png")
+img <- image_read("Canvas1500x500.png")
 # Get image dimensions
 info <- image_info(img)
 img_width <- info$width
@@ -45,4 +45,4 @@ plot <-ggdraw() +
   draw_image(img) +
   draw_plot(p)
 
-ggsave("plotCoin.png", plot, dpi = 300, height = img_height, width = img_width, unit = 'px')
+ggsave("Header1500x500.png", plot, dpi = 300, height = img_height, width = img_width, unit = 'px')

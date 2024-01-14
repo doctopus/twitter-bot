@@ -38,5 +38,5 @@ jobs:
       - name: Upload plot to GitHub
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: plotCoin
-          path: plotCoin.png
+          name: Header1500x500
+          path: Header1500x500.png

@@ -1,19 +1,29 @@
-import { TwitterApi } from 'twitter-api-v2';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const handleTweet = () => {
-    const twitterClient = new TwitterApi({
-        appKey: process.env.API_KEY ?? '',
-        appSecret: process.env.API_SECRET ?? '',
-        accessToken: process.env.ACCESS_TOKEN ?? '',
-        accessSecret: process.env.ACCESS_SECRET ?? '',
-    });
+import { TwitterApi } from 'twitter-api-v2';
+import fs from 'fs';
+const twitterClient = new TwitterApi({
+    appKey: process.env.API_KEY,
+    appSecret: process.env.API_SECRET,
+    accessToken: process.env.ACCESS_TOKEN,
+    accessSecret: process.env.ACCESS_SECRET,
+});
 
-    const tweetClient = twitterClient.readWrite;
+async function updateProfileBanner(imagePath) {
+    try {
+        // Read the image file
+        const image = fs.readFileSync(imagePath, { encoding: 'base64' });
+        // Send a POST request to the Twitter API endpoint for updating the profile banner
+        await twitterClient.v1.post('account/update_profile_banner.json', { banner: image });
+        console.log('Profile banner updated successfully!');
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+}
 
-    tweetClient.v2.tweet('Milliseconds since 01/01/1970: ' + Date.now());
-};
+// Usage example:
 
-handleTweet();
-
+updateProfileBanner('./plotCoin.png')
+    .then(() => console.log('Banner updated successfully!'))
+    .catch(err => console.error('An error occurred:', err));
