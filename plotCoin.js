@@ -1,7 +1,6 @@
 import R from 'r-script';
 import fetch from 'node-fetch';
 import fs from 'fs';
-
 /*const days = 30; // Number of days to plot
 const today = new Date();
 const to = today.toISOString().slice(0, 10);
