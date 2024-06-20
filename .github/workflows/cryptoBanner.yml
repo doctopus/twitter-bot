@@ -1,34 +1,27 @@
 name: Generate Plot and Update Twitter Banner
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Run manually
 
 jobs:
   generate_plot:
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: development
-      # Set other variables from ENV_FILE
-      X_API_KEY: ${{ secrets.X_API_KEY }}
-      X_API_SECRET: ${{ secrets.X_API_SECRET }}
-      X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-      X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
-      X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-      APP_ID: ${{ secrets.APP_ID }}
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16.x'
+
+      - name: Install Node.js dependencies
+        run: |
+          npm ci
+          npm i
 
       - name: Load environment variables
-        run: echo "$(<ENV_FILE)" >> $GITHUB_ENV
-
-      - name: Install dependencies
-        run: npm install
+        run: echo "${{ secrets.ENV_FILE }}" > .env
 
       - name: Install R
         uses: r-lib/actions/setup-r@v2

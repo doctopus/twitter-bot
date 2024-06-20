@@ -1,4 +1,4 @@
-name: send-tweet
+name: set-static-banner
 
 on:
   #schedule:
