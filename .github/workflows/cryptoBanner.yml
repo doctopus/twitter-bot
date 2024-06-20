@@ -24,9 +24,13 @@ jobs:
           sudo apt-get install -y r-base
           R --version
 
+      - name: Set R_LIBS_USER environment variable
+        run: echo "::set-env name=R_LIBS_USER::$(pwd)/RLibs"
+
       - name: Install R packages
         run: |
-          Rscript -e "install.packages(c('ggplot2', 'data.table', 'magick', 'cowplot'), repos='https://cran.rstudio.com/')"
+          mkdir RLibs
+          Rscript -e 'install.packages(c("ggplot2", "data.table", "magick", "cowplot"), repos="https://cran.rstudio.com/", lib=Sys.getenv("R_LIBS_USER"))'
 
       - name: Generate Plot and Update Twitter Banner
         run: node index_crypto_banner.js
