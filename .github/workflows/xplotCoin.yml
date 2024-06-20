@@ -1,4 +1,4 @@
-name: Generate Bitcoin Price Plot
+name: set-plotCoin-banner
 
 on:
   #schedule:

@@ -5,10 +5,10 @@ import { TwitterApi } from 'twitter-api-v2';
 import fs from 'fs';
 
 const twitterClient = new TwitterApi({
-    appKey: process.env.API_KEY,
-    appSecret: process.env.API_SECRET,
-    accessToken: process.env.ACCESS_TOKEN,
-    accessSecret: process.env.ACCESS_SECRET,
+    appKey: process.env.X_API_KEY,
+    appSecret: process.env.X_API_SECRET,
+    accessToken: process.env.X_ACCESS_TOKEN,
+    accessSecret: process.env.X_ACCESS_SECRET,
 });
 
 async function getTweetsFromTimeline(username, count = 10) {

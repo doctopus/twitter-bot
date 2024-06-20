@@ -1,0 +1,45 @@
+name: Generate Plot and Update Twitter Banner
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate_plot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: '4.1.0'
+
+      - name: Install R packages
+        run: |
+          Rscript -e "install.packages(c('ggplot2', 'data.table', 'magick', 'cowplot'), repos='https://cran.rstudio.com/')"
+
+      - name: Generate Plot and Update Twitter Banner
+        run: node index.js
+
+      - name: Archive artifacts
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: generated-files
+          path: |
+            components/plotCoin.csv
+            components/Header1500x500.png
+
+      - name: Cleanup
+        if: always()
+        run: rm -rf node_modules/
+
