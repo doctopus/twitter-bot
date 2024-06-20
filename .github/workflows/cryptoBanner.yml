@@ -28,7 +28,7 @@ jobs:
           Rscript -e "install.packages(c('ggplot2', 'data.table', 'magick', 'cowplot'), repos='https://cran.rstudio.com/')"
 
       - name: Generate Plot and Update Twitter Banner
-        run: node index.js
+        run: node index_crypto_banner.js
 
       - name: Archive artifacts
         if: always()
